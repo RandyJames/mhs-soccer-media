@@ -55,7 +55,8 @@ a{color:inherit}
 .chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .games{display:grid;gap:10px}
 .game{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:78px 1fr auto;gap:8px 12px;align-items:center}
-.game.next{outline:2px solid var(--tc);outline-offset:-2px}
+.game.next{border:2px solid var(--tc);box-shadow:0 0 0 3px var(--tcsoft),0 4px 14px rgba(0,0,0,.18)}
+.nextbadge{display:inline-block;background:var(--tc);color:#fff;font-weight:800;font-size:11px;letter-spacing:.6px;padding:2px 8px;border-radius:999px;vertical-align:middle}
 .date{text-align:center;line-height:1.1}
 .date .dow{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.5px}
 .date .day{font-size:22px;font-weight:800}
@@ -141,7 +142,7 @@ function render(){
       return `<div class="game ${isNext?'next':''}">
         <div class="date"><div class="dow">${f.dow}</div><div class="day">${f.day}</div><div class="mon">${f.mon}</div></div>
         <div><div class="opp"><span class="ha ${g.ha}">${g.ha==='H'?'HOME':'AWAY'}</span>${g.ha==='H'?'vs':'@'} ${g.opp}</div>
-             <div class="meta">${g.t}${isNext?' · <b style="color:var(--tc)">next game</b>':''}${g.n?' · <span class="note">'+g.n+'</span>':''}${(!g.v.length && f.past && g.r && g.r!=='TBD' && !g.r.startsWith('PPD'))?' · no video':''}</div></div>
+             <div class="meta">${g.t}${isNext?' · <span class="nextbadge">NEXT GAME</span>':''}${g.n?' · <span class="note">'+g.n+'</span>':''}${(!g.v.length && f.past && g.r && g.r!=='TBD' && !g.r.startsWith('PPD'))?' · no video':''}</div></div>
         <div class="res ${rc}">${g.r || (f.past?'—':'upcoming')}</div>
         <div class="vids">${vids}</div>
       </div>`;
@@ -155,7 +156,7 @@ TEAMS.forEach((t,i) => {
   b.innerHTML = `${t.name}<small>${t.rec[0]}-${t.rec[1]}${t.rec[2]?'-'+t.rec[2]:''}</small>`;
   b.setAttribute('aria-selected', i===0); b.onclick = () => select(t.key); tabs.appendChild(b);
   const nv = t.games.reduce((n,g)=>n+g.v.length,0);
-  const p = document.createElement('section'); p.className='panel'+(i===0?' on':''); p.id='p-'+t.key; p.style.setProperty('--tc', t.color);
+  const p = document.createElement('section'); p.className='panel'+(i===0?' on':''); p.id='p-'+t.key; p.style.setProperty('--tc', t.color); p.style.setProperty('--tcsoft', t.color+'40');
   p.innerHTML = `<div class="teamhead"><h2>${t.name}</h2>
       <span class="rec"><span class="w">${t.rec[0]} W</span><span class="l">${t.rec[1]} L</span><span class="t">${t.rec[2]} T</span></span>
       <span class="meta">${nv} video${nv===1?'':'s'} · <a href="${t.maxpreps}" target="_blank" rel="noopener">MaxPreps</a></span></div>
