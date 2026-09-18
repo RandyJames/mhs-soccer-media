@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MHS Soccer Media 2026</title>
+<meta name="description" content="Maynard High School soccer — Fall 2026 photos, full-game video and highlight clips.">
+<style>
+:root{
+  --orange:#F26A21; --orange-d:#C9520F; --ink:#161616; --paper:#FFFFFF; --bg:#F6F4F1; --mute:#6B6B6B; --line:#E6E2DC;
+  --win:#0B6B2B; --win-bg:#DFF5E1; --loss:#9B1C1C; --loss-bg:#FBE3E3; --tie:#7A5A00; --tie-bg:#FFF4CC;
+  --yt:#FF0000; --photo:#1A73E8;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#F2F2F2; --paper:#1E1E1E; --bg:#121212; --mute:#A5A5A5; --line:#333; --win-bg:#123D1F; --win:#8FE0A4; --loss-bg:#4A1616; --loss:#FFB4B4; --tie-bg:#4A3B00; --tie:#FFE08A; } }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:inherit}
+.hero{background:linear-gradient(135deg,#161616 0%,#2a2a2a 55%,var(--orange) 140%);color:#fff;padding:28px 16px 22px;position:relative;overflow:hidden}
+.hero::after{content:"⚽️";position:absolute;right:-10px;top:-18px;font-size:150px;opacity:.10;transform:rotate(-15deg)}
+.hero h1{margin:0;font-size:clamp(26px,6vw,40px);letter-spacing:-.5px;line-height:1.1}
+.hero h1 span{color:var(--orange)}
+.hero p{margin:8px 0 0;color:#e5e5e5;max-width:720px}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 48px}
+.notice{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:10px;padding:12px 14px;margin:16px 0;font-size:15px}
+.notice b{color:var(--orange-d)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;position:sticky;top:0;background:var(--bg);z-index:5;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;white-space:nowrap;color:var(--ink)}
+.tab[aria-selected="true"]{border-color:var(--tc);background:var(--tc);color:#fff}
+.tab small{font-weight:500;opacity:.8;margin-left:6px}
+.panel{display:none} .panel.on{display:block}
+.teamhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:12px 0 6px}
+.teamhead h2{margin:0;font-size:24px;border-left:6px solid var(--tc);padding-left:10px}
+.rec{display:inline-flex;gap:6px;align-items:center;font-weight:700}
+.rec span{padding:2px 8px;border-radius:6px;font-size:14px}
+.rec .w{background:var(--win-bg);color:var(--win)} .rec .l{background:var(--loss-bg);color:var(--loss)} .rec .t{background:var(--tie-bg);color:var(--tie)}
+.albums{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:9px 13px;text-decoration:none;font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--paper)}
+.btn.photo{border-color:var(--photo);color:var(--photo)}
+.btn.yt{border-color:var(--yt);color:var(--yt)}
+.btn.clip{border-color:var(--orange);color:var(--orange-d)}
+.btn.ghost{color:var(--mute);border-style:dashed}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.games{display:grid;gap:10px}
+.game{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:78px 1fr auto;gap:8px 12px;align-items:center}
+.game.next{outline:2px solid var(--tc);outline-offset:-2px}
+.date{text-align:center;line-height:1.1}
+.date .dow{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.5px}
+.date .day{font-size:22px;font-weight:800}
+.date .mon{font-size:12px;font-weight:600}
+.opp{font-weight:700;font-size:17px}
+.meta{font-size:13px;color:var(--mute)}
+.meta .note{color:var(--orange-d);font-weight:600}
+.res{font-weight:800;padding:6px 10px;border-radius:8px;text-align:center;min-width:64px;font-size:15px}
+.res.W{background:var(--win-bg);color:var(--win)} .res.L{background:var(--loss-bg);color:var(--loss)} .res.T{background:var(--tie-bg);color:var(--tie)}
+.res.up{background:transparent;color:var(--mute);font-weight:600;border:1px dashed var(--line)}
+.vids{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.vids:empty{display:none}
+.ha{display:inline-block;font-size:11px;font-weight:800;padding:1px 6px;border-radius:4px;background:var(--line);color:var(--ink);margin-right:6px;vertical-align:middle}
+.ha.H{background:var(--tc);color:#fff}
+.empty{color:var(--mute);text-align:center;padding:20px}
+h3.sec{margin:28px 0 8px;font-size:20px}
+.clips{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.clips ol{padding-left:20px;margin:6px 0}
+.clips li{margin:4px 0}
+.foot{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;margin-top:24px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.foot img{width:120px;height:120px;border-radius:8px;background:#fff}
+.foot small{color:var(--mute);display:block;margin-top:6px}
+@media (max-width:480px){ .game{grid-template-columns:64px 1fr auto} .opp{font-size:16px} .foot{grid-template-columns:1fr} .foot img{justify-self:center} }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap" style="padding-bottom:0">
+    <h1>Maynard High School <span>Soccer</span> 2026</h1>
+    <p>Photos · full-game video · highlight clips. Links are unlisted — share with friends &amp; family, just not the opposing coaches. 🐯</p>
+  </div>
+</header>
+<main class="wrap">
+  <div class="notice"><b>New this year:</b> photos live in Google Photos (works on any phone, no iCloud needed) and most full games come from the Veo camera with chapters so you can jump straight to goals. Questions or footage to add? <a href="mailto:RandyJames@magnetbeans.com">RandyJames@magnetbeans.com</a> · +1 (978) 394-4009</div>
+
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="panels"></div>
+
+  <h3 class="sec">✂️ How to make a clip</h3>
+  <div class="clips">
+    <p style="margin:0 0 6px">YouTube can share a 5–60 second <b>Clip</b> of any full game — much better than screen-recording your phone.</p>
+    <b>Computer:</b>
+    <ol><li>Open the game video, pause near the moment.</li><li>Click <b>Clip</b> (scissors) under the video — may be under “…”.</li><li>Drag the handles, name it, <b>Share clip</b>, copy the link.</li></ol>
+    <b>Phone:</b>
+    <ol><li>Open in the <b>YouTube app</b> (not the browser).</li><li>Tap <b>Clip</b> under the video.</li><li>Trim, name, <b>Share clip</b> → Messages / Facebook.</li></ol>
+    <p style="margin:6px 0 0;color:var(--mute);font-size:14px">Tip: Veo uploads have chapters — tap “GOAL” under the video to jump right there first.</p>
+  </div>
+
+  <div class="foot">
+    <div>
+      <b>Share this page</b><br>
+      <a href="https://randyjames.github.io/mhs-soccer-media/">https://randyjames.github.io/mhs-soccer-media/</a>
+      <small>Also available as a <a href="https://docs.google.com/document/d/1xCO8E7LoyG5i5ZAMSJqgMBb4hyP4r3YGeF0hPRI1gUA/edit">Google Doc</a>. Results via <a href="https://www.maxpreps.com/ma/maynard/maynard-tigers/soccer/girls/schedule/">MaxPreps</a>; official schedule &amp; changes on <a href="https://www.arbiterlive.com/Teams?entityId=14145">Arbiter Live</a>. Updated <span id="upd">Sep 18, 2026</span>.</small>
+    </div>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAEoAQAAAADDfFG0AAACAUlEQVR4nO2awW7kMAxDyUX+/5ffHkQ5CbqHnmIBax+K6YTAEIRMU3KMfrH+/AZ0UAf1Y12S61MVmpGFJcz9ZCr7LXqVUpYsoh6ub/vJVPabULaV0hKUcJbXk9nsP0Vdr/8QRkSwnbymop56xbuQkdrQNvGairqklzJYBhk9NZvKfo9evfMwimKSHwfkWPZb9FrVVUUV0dbxuIfXVNQlmcoQOB+NxLJ8tvCailrurtqXnbi4k+vJq28UsmXLVPiqrGosMBKj2X+PsiDRq1QTTon1WTCY/feoNI6KVkKmQ2tUG8z+Y1TlVXd9ERNznC2eP5X9Fr/Xyltefh/lqBg2lv0m/5Ltqi6pLMvZjRF0MPvvUe1SbfH0QSmcHTmY/ceomhfiRw9ZkbVOyzyYyn6Tf8Xwy7diYp36z378ibLukaqFbGcQJstnPz6WeY69nIa7B/d9YE5lv62+ENUsOrkLBKYqbjb7T1GVV1nDZ9QplTu3jmW/C2WAvh66J1/OJh3O/nsUpU0Ec39TuWIjr3moqzrsu/WJ7S/1Tv/4Wo/77TW4V5z/vieayn4PCoDO+WJ124mw23hNRF3SMvlcDZE5mDO+95lH/xsVG8vbAPVuAMe/Xuv1PsA9IiStZLqiqew3oaDvHN2mr2h2zsf3+tEsttXXH06+f691+fjZLx7U/4T6C2hEAGF23KBtAAAAAElFTkSuQmCC" alt="QR code for this page">
+  </div>
+</main>
+
+<script>
+const TEAMS = [{"key": "gv", "name": "Girls Varsity", "short": "GV", "color": "#F26A21", "tint": "#FFF1E8", "photos": [{"l": "MHS Girls Varsity ⚽️ 2026 Highlights (Google Photos, 184+ items)", "u": "https://photos.app.goo.gl/dSVeTR5byp5LRX5e8"}], "maxpreps": "https://www.maxpreps.com/ma/maynard/maynard-tigers/soccer/girls/schedule/", "rec": [2, 2, 0], "games": [{"d": "2026-09-01", "opp": "North Middlesex", "ha": "H", "t": "6:00 PM", "r": "PPD? (weather)", "v": [], "n": ""}, {"d": "2026-09-03", "opp": "Fitchburg", "ha": "H", "t": "6:00 PM", "r": "TBD", "v": [], "n": ""}, {"d": "2026-09-08", "opp": "Marlborough", "ha": "H", "t": "4:00 PM", "r": "L 2-3", "v": [{"l": "Full game", "u": "https://youtu.be/AZbw7ypL96M", "k": "yt"}], "n": ""}, {"d": "2026-09-10", "opp": "Littleton", "ha": "A", "t": "4:00 PM", "r": "L 0-2", "v": [], "n": ""}, {"d": "2026-09-15", "opp": "Tahanto", "ha": "A", "t": "4:00 PM", "r": "W 3-1", "v": [], "n": ""}, {"d": "2026-09-17", "opp": "Ayer Shirley", "ha": "A", "t": "5:30 PM", "r": "W 2-1", "v": [{"l": "Full game (Veo)", "u": "https://youtu.be/GepyHBwqbj8", "k": "yt"}], "n": ""}, {"d": "2026-09-19", "opp": "Wayland", "ha": "H", "t": "2:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-22", "opp": "Hudson", "ha": "H", "t": "6:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-24", "opp": "Tyngsborough", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-25", "opp": "Clinton", "ha": "A", "t": "6:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-29", "opp": "Lunenburg", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-01", "opp": "Bromfield", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-03", "opp": "Weston", "ha": "H", "t": "10:00 AM", "r": "", "v": [], "n": ""}, {"d": "2026-10-06", "opp": "Littleton", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-08", "opp": "Tahanto", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-15", "opp": "Hudson", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-20", "opp": "Tyngsborough", "ha": "H", "t": "6:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-22", "opp": "Lunenburg", "ha": "A", "t": "6:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-27", "opp": "Bromfield", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-29", "opp": "Marlborough", "ha": "A", "t": "7:00 PM", "r": "", "v": [], "n": ""}]}, {"key": "gjv", "name": "Girls Junior Varsity", "short": "GJV", "color": "#E0A100", "tint": "#FFF8E1", "photos": [{"l": "MHS Girls JV ⚽️ 2026 Highlights (Google Photos, 127+ items)", "u": "https://photos.google.com/share/AF1QipPk2wE91zvG6TCCvnlscOPtzAqL5RuZCOwCRcVBbXUUAYCiO9KYxI0lVM3QjJSDrQ?key=MGRRRVlRaV9BNHBYbDhQSE1jeVVhTHVrdGg3OVF3"}], "maxpreps": "https://www.maxpreps.com/ma/maynard/maynard-tigers/soccer/girls/jv/schedule/", "rec": [2, 1, 1], "games": [{"d": "2026-09-01", "opp": "North Middlesex", "ha": "H", "t": "6:00 PM", "r": "PPD? (weather)", "v": [], "n": ""}, {"d": "2026-09-08", "opp": "Marlborough", "ha": "H", "t": "4:00 PM", "r": "W 8-0", "v": [{"l": "Full game (Veo)", "u": "https://youtu.be/XOs4t18TDSI", "k": "yt"}], "n": ""}, {"d": "2026-09-10", "opp": "Littleton", "ha": "A", "t": "4:00 PM", "r": "L 1-6", "v": [{"l": "Full game (Veo)", "u": "https://youtu.be/9BxRH67fbD4", "k": "yt"}], "n": ""}, {"d": "2026-09-15", "opp": "Tahanto", "ha": "A", "t": "4:00 PM", "r": "W 2-0", "v": [{"l": "Full game (Veo)", "u": "https://youtu.be/J_mGWFkLwCA", "k": "yt"}, {"l": "Clip: Molly scores", "u": "https://youtu.be/ZnVLiDOBtVY", "k": "clip"}], "n": ""}, {"d": "2026-09-17", "opp": "Ayer Shirley", "ha": "A", "t": "3:45 PM", "r": "T 0-0", "v": [], "n": ""}, {"d": "2026-09-22", "opp": "Hudson", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-24", "opp": "Tyngsborough", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-25", "opp": "Clinton", "ha": "A", "t": "4:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-29", "opp": "Lunenburg", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-03", "opp": "Weston", "ha": "H", "t": "10:00 AM", "r": "", "v": [], "n": ""}, {"d": "2026-10-08", "opp": "Tahanto", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-15", "opp": "Hudson", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-27", "opp": "Wayland", "ha": "H", "t": "4:15 PM", "r": "", "v": [], "n": "moved from 9/19"}, {"d": "2026-10-29", "opp": "Marlborough", "ha": "A", "t": "5:00 PM", "r": "", "v": [], "n": ""}]}, {"key": "bv", "name": "Boys Varsity", "short": "BV", "color": "#1F1F1F", "tint": "#F1F1F1", "photos": [{"l": "MHS Boys Varsity ⚽️ 2026 Highlights (Google Photos, 34+ items)", "u": "https://photos.app.goo.gl/CRBj5xxTW3XtZm6p9"}], "maxpreps": "https://www.maxpreps.com/ma/maynard/maynard-tigers/soccer/boys/schedule/", "rec": [0, 3, 2], "games": [{"d": "2026-09-01", "opp": "Nashoba", "ha": "A", "t": "3:30 PM", "r": "L 1-3", "v": [], "n": ""}, {"d": "2026-09-03", "opp": "Millis", "ha": "H", "t": "4:00 PM", "r": "T 2-2", "v": [], "n": ""}, {"d": "2026-09-08", "opp": "Weston", "ha": "A", "t": "4:15 PM", "r": "L 0-2", "v": [], "n": ""}, {"d": "2026-09-10", "opp": "Littleton", "ha": "H", "t": "4:00 PM", "r": "T 2-2", "v": [], "n": ""}, {"d": "2026-09-15", "opp": "Fitchburg", "ha": "H", "t": "4:00 PM", "r": "L 3-4", "v": [], "n": ""}, {"d": "2026-09-17", "opp": "Ayer Shirley", "ha": "H", "t": "4:00 PM", "r": "TBD", "v": [], "n": ""}, {"d": "2026-09-19", "opp": "Clinton", "ha": "H", "t": "12:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-22", "opp": "Hudson", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-24", "opp": "Tyngsborough", "ha": "H", "t": "6:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-26", "opp": "Assabet Valley", "ha": "H", "t": "10:00 AM", "r": "", "v": [], "n": ""}, {"d": "2026-09-29", "opp": "Lunenburg", "ha": "A", "t": "5:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-01", "opp": "Bromfield", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-06", "opp": "Littleton", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-08", "opp": "Fitchburg", "ha": "A", "t": "6:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-12", "opp": "AMSA", "ha": "A", "t": "3:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-15", "opp": "Hudson", "ha": "H", "t": "6:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-17", "opp": "Oakmont", "ha": "A", "t": "11:00 AM", "r": "", "v": [], "n": ""}, {"d": "2026-10-20", "opp": "Tyngsborough", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-22", "opp": "Lunenburg", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-24", "opp": "AMSA", "ha": "A", "t": "10:00 AM", "r": "", "v": [], "n": ""}, {"d": "2026-10-27", "opp": "Bromfield", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}]}, {"key": "bjv", "name": "Boys Junior Varsity", "short": "BJV", "color": "#5B5B5B", "tint": "#F5F5F5", "photos": [], "maxpreps": "https://www.maxpreps.com/ma/maynard/maynard-tigers/soccer/boys/jv/schedule/", "rec": [2, 2, 1], "games": [{"d": "2026-09-01", "opp": "Nashoba", "ha": "A", "t": "3:30 PM", "r": "TBD", "v": [], "n": ""}, {"d": "2026-09-03", "opp": "Millis", "ha": "H", "t": "4:00 PM", "r": "W 5-0", "v": [], "n": ""}, {"d": "2026-09-08", "opp": "Weston", "ha": "A", "t": "4:15 PM", "r": "T 1-1", "v": [], "n": ""}, {"d": "2026-09-10", "opp": "Littleton", "ha": "H", "t": "4:00 PM", "r": "L 0-5", "v": [], "n": ""}, {"d": "2026-09-15", "opp": "Fitchburg", "ha": "H", "t": "4:00 PM", "r": "L 1-2", "v": [], "n": ""}, {"d": "2026-09-17", "opp": "Ayer Shirley", "ha": "H", "t": "4:00 PM", "r": "W 1-0", "v": [], "n": ""}, {"d": "2026-09-22", "opp": "Hudson", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-09-26", "opp": "Assabet Valley", "ha": "H", "t": "10:00 AM", "r": "", "v": [], "n": ""}, {"d": "2026-10-01", "opp": "Bromfield", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-06", "opp": "Littleton", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-12", "opp": "AMSA", "ha": "A", "t": "3:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-13", "opp": "AMSA", "ha": "A", "t": "3:30 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-15", "opp": "Hudson", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-20", "opp": "Tyngsborough", "ha": "A", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-22", "opp": "Lunenburg", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": ""}, {"d": "2026-10-24", "opp": "AMSA", "ha": "A", "t": "8:30 AM", "r": "", "v": [], "n": ""}, {"d": "2026-10-26", "opp": "Clinton", "ha": "H", "t": "4:00 PM", "r": "", "v": [], "n": "moved from 9/19"}]}];
+const today = new Date(); today.setHours(0,0,0,0);
+const fmt = d => { const dt = new Date(d+"T12:00:00"); return {dow: dt.toLocaleDateString('en-US',{weekday:'short'}), day: dt.getDate(), mon: dt.toLocaleDateString('en-US',{month:'short'}), past: dt < today}; };
+const tabs = document.getElementById('tabs'), panels = document.getElementById('panels');
+let filter = 'all';
+
+function resClass(r){ if(!r) return 'up'; const c=r[0]; return (c==='W'||c==='L'||c==='T') && r!=='TBD' ? c : 'up'; }
+
+function render(){
+  TEAMS.forEach((t,i) => {
+    const p = document.getElementById('p-'+t.key);
+    const list = p.querySelector('.games');
+    let nextMarked = false;
+    const rows = t.games.filter(g => {
+      if(filter==='video') return g.v.length>0;
+      if(filter==='home') return g.ha==='H';
+      if(filter==='away') return g.ha==='A';
+      if(filter==='upcoming') return !fmt(g.d).past && !g.r;
+      return true;
+    }).map(g => {
+      const f = fmt(g.d); const rc = resClass(g.r);
+      const isNext = !nextMarked && !f.past && !g.r && filter!=='video'; if(isNext) nextMarked = true;
+      const vids = g.v.map(v => `<a class="btn ${v.k==='clip'?'clip':'yt'}" href="${v.u}" target="_blank" rel="noopener">${v.k==='clip'?'✂️':'▶️'} ${v.l}</a>`).join('');
+      return `<div class="game ${isNext?'next':''}">
+        <div class="date"><div class="dow">${f.dow}</div><div class="day">${f.day}</div><div class="mon">${f.mon}</div></div>
+        <div><div class="opp"><span class="ha ${g.ha}">${g.ha==='H'?'HOME':'AWAY'}</span>${g.ha==='H'?'vs':'@'} ${g.opp}</div>
+             <div class="meta">${g.t}${isNext?' · <b style="color:var(--tc)">next game</b>':''}${g.n?' · <span class="note">'+g.n+'</span>':''}${(!g.v.length && f.past && g.r && g.r!=='TBD' && !g.r.startsWith('PPD'))?' · no video':''}</div></div>
+        <div class="res ${rc}">${g.r || (f.past?'—':'upcoming')}</div>
+        <div class="vids">${vids}</div>
+      </div>`;
+    });
+    list.innerHTML = rows.join('') || '<div class="empty">Nothing here yet.</div>';
+  });
+}
+
+TEAMS.forEach((t,i) => {
+  const b = document.createElement('button'); b.className='tab'; b.role='tab'; b.style.setProperty('--tc', t.color);
+  b.innerHTML = `${t.name}<small>${t.rec[0]}-${t.rec[1]}${t.rec[2]?'-'+t.rec[2]:''}</small>`;
+  b.setAttribute('aria-selected', i===0); b.onclick = () => select(t.key); tabs.appendChild(b);
+  const nv = t.games.reduce((n,g)=>n+g.v.length,0);
+  const p = document.createElement('section'); p.className='panel'+(i===0?' on':''); p.id='p-'+t.key; p.style.setProperty('--tc', t.color);
+  p.innerHTML = `<div class="teamhead"><h2>${t.name}</h2>
+      <span class="rec"><span class="w">${t.rec[0]} W</span><span class="l">${t.rec[1]} L</span><span class="t">${t.rec[2]} T</span></span>
+      <span class="meta">${nv} video${nv===1?'':'s'} · <a href="${t.maxpreps}" target="_blank" rel="noopener">MaxPreps</a></span></div>
+    <div class="albums">${t.photos.length ? t.photos.map(a=>`<a class="btn photo" href="${a.u}" target="_blank" rel="noopener">📸 ${a.l}</a>`).join('') : '<span class="btn ghost">📸 No photos yet — album link coming when I get to a game</span>'}</div>
+    <div class="filters">${['all','video','upcoming','home','away'].map(f=>`<button class="chip ${f===filter?'on':''}" data-f="${f}">${ {all:'All games',video:'▶️ With video',upcoming:'Upcoming',home:'Home',away:'Away'}[f] }</button>`).join('')}</div>
+    <div class="games"></div>`;
+  panels.appendChild(p);
+});
+document.querySelectorAll('.chip').forEach(c => c.onclick = () => { filter = c.dataset.f; document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on', x.dataset.f===filter)); render(); });
+function select(key){
+  document.querySelectorAll('.tab').forEach((b,i)=>b.setAttribute('aria-selected', TEAMS[i].key===key));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on', p.id==='p-'+key));
+  try{ history.replaceState(null,'','#'+key); }catch(e){}
+}
+render();
+const h = location.hash.replace('#',''); if(TEAMS.some(t=>t.key===h)) select(h);
+</script>
+</body>
+</html>
