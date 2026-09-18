@@ -159,7 +159,7 @@ TEAMS.forEach((t,i) => {
       <span class="rec"><span class="w">${t.rec[0]} W</span><span class="l">${t.rec[1]} L</span><span class="t">${t.rec[2]} T</span></span>
       <span class="meta">${nv} video${nv===1?'':'s'} · <a href="${t.maxpreps}" target="_blank" rel="noopener">MaxPreps</a></span></div>
     <div class="albums">${t.photos.length ? t.photos.map(a=> t.thumbs.length
-        ? `<a class="strip" href="${a.u}" target="_blank" rel="noopener" title="${a.l}"><div class="grid">${t.thumbs.map(u=>`<img src="${u}=w480-h320-c" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">`).join('')}</div><div class="cap">📸 ${a.l.replace(/ \(Google Photos.*$/,'')}<span>View album →</span></div></a>`
+        ? `<a class="strip" href="${a.u}" target="_blank" rel="noopener" title="${a.l}"><div class="grid">${t.thumbs.map(u=>`<img src="${u}=w480-h320-c" alt="" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">`).join('')}</div><div class="cap">📸 ${a.l.replace(/ \(Google Photos.*$/,'')}<span>View album →</span></div></a>`
         : `<a class="btn photo" href="${a.u}" target="_blank" rel="noopener">📸 ${a.l}</a>`).join('') : '<span class="btn ghost">📸 No photos yet — album link coming when I get to a game</span>'}</div>
     <div class="filters">${['all','video','upcoming','home','away'].map(f=>`<button class="chip ${f===filter?'on':''}" data-f="${f}">${ {all:'All games',video:'▶️ With video',upcoming:'Upcoming',home:'Home',away:'Away'}[f] }</button>`).join('')}</div>
     <div class="games"></div>`;
