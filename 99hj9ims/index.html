@@ -10,9 +10,9 @@
 :root{
   --orange:#F26A21; --orange-d:#C9520F; --ink:#161616; --paper:#FFFFFF; --bg:#F6F4F1; --mute:#6B6B6B; --line:#E6E2DC;
   --win:#0B6B2B; --win-bg:#DFF5E1; --loss:#9B1C1C; --loss-bg:#FBE3E3; --tie:#7A5A00; --tie-bg:#FFF4CC;
-  --yt:#FF0000; --photo:#1A73E8; --veo:#0A7A58; --wavm:#5B22C4;
+  --yt:#FF0000; --photo:#1A73E8; --veo:#0A7A58; --wavm:#5B22C4; --rowhi:rgba(242,106,33,.10);
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#F2F2F2; --paper:#1E1E1E; --bg:#121212; --mute:#A5A5A5; --line:#333; --win-bg:#123D1F; --win:#8FE0A4; --loss-bg:#4A1616; --loss:#FFB4B4; --tie-bg:#4A3B00; --tie:#FFE08A; --orange-d:#FF8A4C; --yt:#FF4D4D; --photo:#6FA8FF; --veo:#3DDBA4; --wavm:#B79BFF; } }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#F2F2F2; --paper:#1E1E1E; --bg:#121212; --mute:#A5A5A5; --line:#333; --win-bg:#123D1F; --win:#8FE0A4; --loss-bg:#4A1616; --loss:#FFB4B4; --tie-bg:#4A3B00; --tie:#FFE08A; --orange-d:#FF8A4C; --yt:#FF4D4D; --photo:#6FA8FF; --veo:#3DDBA4; --wavm:#B79BFF; --rowhi:rgba(242,106,33,.16); } }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 a{color:inherit}
@@ -23,13 +23,36 @@ a{color:inherit}
 .hero p{margin:8px 0 0;color:#e5e5e5;max-width:720px}
 .wrap{max-width:960px;margin:0 auto;padding:0 16px 48px}
 .ask{margin:12px 0 10px;font-size:14px;color:var(--mute)}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:6px;margin:14px 0 4px;background:var(--paper);border:1px solid var(--line);border-radius:14px;position:sticky;top:6px;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:6px;margin:14px 0 4px;background:var(--paper);border:1px solid var(--line);border-radius:14px;position:sticky;top:6px;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .tab{display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid transparent;background:transparent;border-radius:10px;padding:10px 6px 8px;font-weight:700;font-size:15px;cursor:pointer;color:var(--ink);line-height:1.15;transition:background .15s;border-bottom:4px solid var(--tc)}
 .tab:hover{background:var(--bg)}
 .tab small{font-weight:600;font-size:12px;opacity:.7}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);border-bottom-color:var(--tc);border-bottom-width:5px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 .tab[aria-selected="true"] small{opacity:.9}
-@media (max-width:560px){ .tabs{grid-template-columns:repeat(2,1fr)} .tab{font-size:14px} }
+@media (max-width:560px){ .tabs{grid-template-columns:repeat(2,1fr)} .tab{font-size:13px;padding:9px 4px 7px} .tab.wide{grid-column:span 2} }
+@media (max-width:860px) and (min-width:561px){ .tab{font-size:13px} }
+.scrollx{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.sched{width:100%;min-width:720px;border-collapse:collapse;font-size:14px}
+.sched th,.sched td{padding:8px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.sched thead th{position:sticky;top:0;background:var(--paper);z-index:2;font-size:12px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;border-bottom:3px solid var(--line)}
+.sched thead th.t{border-bottom-color:var(--c);color:var(--c)}
+.sched tbody tr:hover{background:var(--bg)}
+.sched tr.past td{opacity:.45}
+.sched tr.nextrow td{background:var(--rowhi)}
+.sched tr.nextrow td.dt{box-shadow:inset 3px 0 0 var(--orange)}
+.sched tr.nextrow td.dt::after{content:'NEXT';display:block;font-size:9px;font-weight:800;letter-spacing:.6px;color:#fff;background:var(--orange);border-radius:3px;padding:0 4px;margin-top:3px;width:max-content}
+.sched td.dt,.sched th.dt{position:sticky;left:0;background:var(--paper);z-index:1;white-space:nowrap;width:104px;font-weight:700;border-right:1px solid var(--line)}
+.sched tr:hover td.dt{background:var(--bg)}
+.sched tr.nextrow td.dt{background:var(--rowhi)}
+.dt .dow{display:block;font-size:11px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.5px}
+.cell{border-left:3px solid var(--c);padding-left:8px;line-height:1.3}
+.cell b{display:block;font-weight:700;font-size:14px}
+.cell .tm{font-size:12px;color:var(--mute)}
+.cell .hh{display:inline-block;font-size:10px;font-weight:800;padding:0 4px;border-radius:3px;background:var(--c);color:#fff;margin-right:4px;vertical-align:1px}
+.cell .aa{display:inline-block;font-size:10px;font-weight:800;padding:0 4px;border-radius:3px;border:1px solid var(--c);color:var(--c);margin-right:4px;vertical-align:1px}
+.cell .nt{display:block;font-size:11px;color:var(--orange-d);font-weight:600}
+.none{color:var(--line);font-size:16px}
+.legend{font-size:13px;color:var(--mute);margin:10px 0 0}
 .panel{display:none} .panel.on{display:block}
 .teamhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:12px 0 6px}
 .teamhead h2{margin:0;font-size:24px;border-left:6px solid var(--tc);padding-left:10px}
@@ -72,10 +95,6 @@ a{color:inherit}
 .ha{display:inline-block;font-size:11px;font-weight:800;padding:1px 6px;border-radius:4px;background:var(--line);color:var(--ink);margin-right:6px;vertical-align:middle}
 .ha.H{background:var(--tc);color:#fff}
 .empty{color:var(--mute);text-align:center;padding:20px}
-h3.sec{margin:28px 0 8px;font-size:20px}
-.clips{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.clips ol{padding-left:20px;margin:6px 0}
-.clips li{margin:4px 0}
 .foot{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;margin-top:24px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .foot img{width:120px;height:120px;border-radius:8px;background:#fff}
 .foot small{color:var(--mute);display:block;margin-top:6px}
@@ -95,16 +114,6 @@ h3.sec{margin:28px 0 8px;font-size:20px}
   <div class="tabs" role="tablist" id="tabs"></div>
   <div id="panels"></div>
 
-  <h3 class="sec">✂️ How to make a clip</h3>
-  <div class="clips">
-    <p style="margin:0 0 6px">YouTube can share a 5–60 second <b>Clip</b> of any full game — much better than screen-recording your phone.</p>
-    <b>Computer:</b>
-    <ol><li>Open the game video, pause near the moment.</li><li>Click <b>Clip</b> (scissors) under the video — may be under “…”.</li><li>Drag the handles, name it, <b>Share clip</b>, copy the link.</li></ol>
-    <b>Phone:</b>
-    <ol><li>Open in the <b>YouTube app</b> (not the browser).</li><li>Tap <b>Clip</b> under the video.</li><li>Trim, name, <b>Share clip</b> → Messages / Facebook.</li></ol>
-    <p style="margin:6px 0 0;color:var(--mute);font-size:14px">Tip: Veo uploads have chapters — tap “GOAL” under the video to jump right there first.</p>
-  </div>
-
   <div class="foot">
     <div>
       <b>Share this page</b><br>
@@ -121,6 +130,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const fmt = d => { const dt = new Date(d+"T12:00:00"); return {dow: dt.toLocaleDateString('en-US',{weekday:'short'}), day: dt.getDate(), mon: dt.toLocaleDateString('en-US',{month:'short'}), past: dt < today}; };
 const tabs = document.getElementById('tabs'), panels = document.getElementById('panels');
 let filter = 'all';
+let schedFilter = 'all';
 
 function resClass(r){ if(!r) return 'up'; const c=r[0]; return (c==='W'||c==='L'||c==='T') && r!=='TBD' ? c : 'up'; }
 
@@ -151,12 +161,54 @@ function render(){
   });
 }
 
-TEAMS.forEach((t,i) => {
-  const b = document.createElement('button'); b.className='tab'; b.role='tab'; b.style.setProperty('--tc', t.color);
-  b.innerHTML = `${t.name}<small>${t.rec[0]}-${t.rec[1]}${t.rec[2]?'-'+t.rec[2]:''}</small>`;
-  b.setAttribute('aria-selected', i===0); b.onclick = () => select(t.key); tabs.appendChild(b);
+/* ---------- combined schedule (all teams, one row per date) ---------- */
+function buildSchedule(){
+  const dates = [...new Set(TEAMS.flatMap(t => t.games.map(g => g.d)))].sort();
+  const head = `<thead><tr><th class="dt">Date</th>${
+      TEAMS.map(t=>`<th class="t" style="--c:${t.color}">${t.name.replace('Junior Varsity','JV')}</th>`).join('')
+    }</tr></thead>`;
+  let nextMarked = false;
+  const body = dates.map(d => {
+    const f = fmt(d);
+    const dayGames = TEAMS.map(t => t.games.filter(g => g.d === d));
+    const anyUpcoming = dayGames.some((gs,i) => gs.some(g => !fmt(g.d).past && !g.r));
+    const isNext = !nextMarked && anyUpcoming; if(isNext) nextMarked = true;
+    if(schedFilter==='upcoming' && f.past) return '';
+    const cells = dayGames.map((gs,i) => {
+      const t = TEAMS[i];
+      if(!gs.length) return `<td><span class="none">·</span></td>`;
+      return `<td>` + gs.map(g => `<div class="cell" style="--c:${t.color}">
+          <b><span class="${g.ha==='H'?'hh':'aa'}">${g.ha}</span>${g.ha==='H'?'vs':'@'} ${g.opp}</b>
+          <span class="tm">${g.t}</span>
+          ${g.n?`<span class="nt">${g.n}</span>`:''}
+        </div>`).join('') + `</td>`;
+    }).join('');
+    return `<tr class="${f.past?'past':''} ${isNext?'nextrow':''}"><td class="dt"><span class="dow">${f.dow}</span>${f.mon} ${f.day}</td>${cells}</tr>`;
+  }).join('');
+  return `<div class="teamhead"><h2 style="border-left-color:var(--orange)">Full Schedule</h2>
+      <span class="meta">Every team, every date · times from Arbiter/MaxPreps</span></div>
+    <div class="filters">${['all','upcoming'].map(f=>`<button class="schip ${f===schedFilter?'on chip':'chip'}" data-s="${f}">${ {all:'Whole season',upcoming:'Upcoming only'}[f] }</button>`).join('')}</div>
+    <div class="scrollx"><table class="sched">${head}<tbody>${body}</tbody></table></div>
+    <p class="legend">H = home (Alumni Field) · A = away. Scroll sideways on a phone. Scores &amp; video live on each team's tab.</p>`;
+}
+
+/* ---------- tabs ---------- */
+const VIEWS = [{key:'all', name:'Full Schedule', sub:'all teams', color:'var(--orange)', wide:true},
+               ...TEAMS.map(t => ({key:t.key, name:t.name, sub:`${t.rec[0]}-${t.rec[1]}${t.rec[2]?'-'+t.rec[2]:''}`, color:t.color}))];
+
+VIEWS.forEach((v,i) => {
+  const b = document.createElement('button'); b.className='tab'+(v.wide?' wide':''); b.role='tab'; b.dataset.key=v.key;
+  b.style.setProperty('--tc', v.color);
+  b.innerHTML = `${v.name}<small>${v.sub}</small>`;
+  b.setAttribute('aria-selected', i===0); b.onclick = () => select(v.key); tabs.appendChild(b);
+});
+
+const sp = document.createElement('section'); sp.className='panel on'; sp.id='p-all';
+panels.appendChild(sp);
+
+TEAMS.forEach(t => {
   const nv = t.games.reduce((n,g)=>n+g.v.length,0);
-  const p = document.createElement('section'); p.className='panel'+(i===0?' on':''); p.id='p-'+t.key; p.style.setProperty('--tc', t.color); p.style.setProperty('--tcsoft', t.color+'40');
+  const p = document.createElement('section'); p.className='panel'; p.id='p-'+t.key; p.style.setProperty('--tc', t.color); p.style.setProperty('--tcsoft', t.color+'40');
   p.innerHTML = `<div class="teamhead"><h2>${t.name}</h2>
       <span class="rec"><span class="w">${t.rec[0]} W</span><span class="l">${t.rec[1]} L</span><span class="t">${t.rec[2]} T</span></span>
       <span class="meta">${nv} video${nv===1?'':'s'} · <a href="${t.maxpreps}" target="_blank" rel="noopener">MaxPreps</a></span></div>
@@ -167,14 +219,22 @@ TEAMS.forEach((t,i) => {
     <div class="games"></div>`;
   panels.appendChild(p);
 });
-document.querySelectorAll('.chip').forEach(c => c.onclick = () => { filter = c.dataset.f; document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on', x.dataset.f===filter)); render(); });
+
+function renderSchedule(){
+  sp.innerHTML = buildSchedule();
+  sp.querySelectorAll('.schip').forEach(c => c.onclick = () => { schedFilter = c.dataset.s; renderSchedule(); });
+}
+
+document.querySelectorAll('.chip[data-f]').forEach(c => c.onclick = () => { filter = c.dataset.f; document.querySelectorAll('.chip[data-f]').forEach(x=>x.classList.toggle('on', x.dataset.f===filter)); render(); });
+
 function select(key){
-  document.querySelectorAll('.tab').forEach((b,i)=>b.setAttribute('aria-selected', TEAMS[i].key===key));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on', p.id==='p-'+key));
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.key===key));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id==='p-'+key));
   try{ history.replaceState(null,'','#'+key); }catch(e){}
 }
+renderSchedule();
 render();
-const h = location.hash.replace('#',''); if(TEAMS.some(t=>t.key===h)) select(h);
+const h = location.hash.replace('#',''); if(VIEWS.some(v=>v.key===h)) select(h);
 </script>
 </body>
 </html>
